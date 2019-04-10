@@ -1,7 +1,7 @@
 from peewee import *
 
 # Connect to a Postgres database.
-pg_db = PostgresqlDatabase('listenpricing', user='postgres', password='123',
+pg_db = PostgresqlDatabase('listenpricing', user='postgres', password='12345678',
                            host='localhost', port=5432)
 """psql_db = PostgresqlDatabase('my_database', user='postgres')"""
 
@@ -62,4 +62,30 @@ def create_user(name, email, password):
     user.save()
     print('salvo')
 
+def update_rule(id_rule, name= "", frequency = "", description = ""):
+    try:
+        rule = Rules.get(Rules.id_rule == id_rule)
+        if(name != ""):
+            rule.name = name
+        if(frequency != ""):
+            rule.frequency = frequency
+        if(description != ""):
+            rule.description = description
+        rule.save()
+    except(Exception):
+        print("id não encontrado")
+
+def delete_product(id_product):
+    try:
+        product = Products.get(Products.id_product == id_product)
+        product.delete_instance()
+    except(Exception):
+        print("produto não encontrado")
+
+
+    print(frequency)
+#rule = Rules.get(Rules.id_rule == 10000)
+#print(rule)
+
+update_rule(id_rule = 1, name = "bbbbbbb")
 print('oi')
