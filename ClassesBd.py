@@ -62,5 +62,4 @@ def create_user(name, email, password):
     user.save()
     print('salvo')
 
-create_user('Natalia', 'nati@hotmail.com', 'gusta')
 print('oi')
