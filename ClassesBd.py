@@ -74,8 +74,15 @@ def update_rule(id_rule, name= "", frequency = "", description = ""):
         rule.save()
     except(Exception):
         print("id não encontrado")
-    
-        
+
+def delete_product(id_product):
+    try:
+        product = Products.get(Products.id_product == id_product)
+        product.delete_instance()
+    except(Exception):
+        print("produto não encontrado")
+
+
     print(frequency)
 #rule = Rules.get(Rules.id_rule == 10000)
 #print(rule)
