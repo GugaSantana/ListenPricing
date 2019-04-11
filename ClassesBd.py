@@ -43,6 +43,7 @@ class Prices(BaseModel):
 
 pg_db.connect()
 pg_db.create_tables([Users, Rules, MonitoringGroup, Products, Prices])
+pg_db.close()
 #user = Users(name = "Gustavo", email = 'Guga@hotmail.com', password='Irineu')
 #user.save()
 #rule = Rules(name="regra 1", frequency="02:00:00", description="esta regra ira buscar todos os produtos cadastrados")
@@ -58,12 +59,15 @@ pg_db.create_tables([Users, Rules, MonitoringGroup, Products, Prices])
 #print("Finish")
 
 def create_user(name, email, password):
+    pg_db.connect()
     user = Users(name = name, email = email, password=password)
     user.save()
+    pg_db.close()
     print('salvo')
 
 def update_rule(id_rule, name= "", frequency = "", description = ""):
     try:
+        pg_db.connect()
         rule = Rules.get(Rules.id_rule == id_rule)
         if(name != ""):
             rule.name = name
@@ -72,18 +76,21 @@ def update_rule(id_rule, name= "", frequency = "", description = ""):
         if(description != ""):
             rule.description = description
         rule.save()
+        pg_db.close()
     except(Exception):
         print("id não encontrado")
 
 def delete_product(id_product):
     try:
+        pg_db.connect()
         product = Products.get(Products.id_product == id_product)
         product.delete_instance()
+        pg_db.close()
     except(Exception):
         print("produto não encontrado")
 
 
-    print(frequency)
+#print(frequency)
 #rule = Rules.get(Rules.id_rule == 10000)
 #print(rule)
 
