@@ -1,7 +1,7 @@
 from peewee import *
 
 # Connect to a Postgres database.
-pg_db = PostgresqlDatabase('postgres', user='postgres', password='123',
+pg_db = PostgresqlDatabase('listenpricing', user='postgres', password='12345678',
                            host='localhost', port=5432)
 """psql_db = PostgresqlDatabase('my_database', user='postgres')"""
 
