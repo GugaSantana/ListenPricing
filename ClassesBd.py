@@ -87,7 +87,7 @@ def delete_product(id_product):
         product.delete_instance()
         pg_db.close()
     except(Exception):
-        print("produto não encontrado")
+        print("produto não encontrado!")
 
 
 #print(frequency)
