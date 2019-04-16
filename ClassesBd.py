@@ -65,6 +65,13 @@ def create_user(name, email, password):
     pg_db.close()
     print('salvo')
 
+def create_rule(name, frequency, description):
+    pg_db.connect()
+    rule = Users(name = name, frequency = frequency, description = description)
+    rule.save()
+    pg_db.close()
+    print('salvo')
+
 def update_rule(id_rule, name= "", frequency = "", description = ""):
     try:
         pg_db.connect()
